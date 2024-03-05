@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace AgenziaSpedizioni.Models
 {
-    //1. Creo la classe Utente con le proprietà IDUtente, Username e Password
+    //1. Creo la classe Utente con le proprietà IDUtente, Username, Password e Ruolo
     
 
     public class Utente
@@ -15,6 +15,7 @@ namespace AgenziaSpedizioni.Models
         public int IDUtente { get; set; }
 
         [Required(ErrorMessage = "Inserire lo username")]
+        [DataType(DataType.Password)]
         [StringLength(50, MinimumLength =3, ErrorMessage = "Lo username deve essere compreso tra 3 e 50 caratteri")]
         public string Username { get; set; }
 
