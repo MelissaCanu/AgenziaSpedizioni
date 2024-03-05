@@ -18,7 +18,7 @@ namespace AgenziaSpedizioni.Models
         public bool IsAzienda { get; set; }
 
         [Display(Name = "Codice fiscale cliente")]
-        [RegularExpression(@"\d{16}", ErrorMessage = "Codice fiscale non valido")]
+        //[RegularExpression(@"\d{16}", ErrorMessage = "Codice fiscale non valido")]
         public string CodFisc { get; set; }
 
         [Display(Name = "P.Iva (Azienda)")]
