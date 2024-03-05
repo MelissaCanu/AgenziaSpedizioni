@@ -15,11 +15,11 @@ namespace AgenziaSpedizioni.Models
         public int IDUtente { get; set; }
 
         [Required(ErrorMessage = "Inserire lo username")]
-        [DataType(DataType.Password)]
         [StringLength(50, MinimumLength =3, ErrorMessage = "Lo username deve essere compreso tra 3 e 50 caratteri")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Inserire la password")]
+        [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "La password deve essere compresa tra 5 e 50 caratteri")]
         public string Password { get; set; }
 
