@@ -35,8 +35,8 @@ namespace AgenziaSpedizioni.Controllers
                 //salvo i dati nel mio db
                 string connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString.ToString();
                 //connection = null per evitare errori nel caso in cui la connessione non venga aperta
-                SqlConnection connection = null;
-                try
+                SqlConnection connection = new SqlConnection(connectionString);
+                try                
                 {
                     connection.Open();
                     //inserisco i dati della spedizione nel db
