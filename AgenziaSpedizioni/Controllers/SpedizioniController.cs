@@ -239,11 +239,11 @@ namespace AgenziaSpedizioni.Controllers
                         {
                             spedizioniOggi.Add(new StatoSpedizione
                             {
-                                IDSpedizione = reader.GetInt32(0),
-                                Stato = reader.GetString(1),
-                                Luogo = reader.GetString(2),
-                                Descrizione = reader.GetString(3),
-                                DataOraAggiornamento = reader.GetDateTime(4)
+                                IDSpedizione = reader.GetInt32(1),
+                                Stato = reader.GetString(2),
+                                Luogo = reader.GetString(3),
+                                Descrizione = reader.GetString(4),
+                                DataOraAggiornamento = reader.GetDateTime(5)
                             });
                         }
                     }
@@ -276,6 +276,8 @@ namespace AgenziaSpedizioni.Controllers
 
         // GET: Spedizioni/SpedizioniPerCitta
         public JsonResult SpedizioniPerCitta()
+
+            //creo un dizionario per contenere le spedizioni per città, con la città come chiave e il conteggio come valore
         {
             Dictionary<string, int> spedizioniPerCitta = new Dictionary<string, int>();
             string connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;

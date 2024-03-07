@@ -13,11 +13,16 @@
     <script>
         setTimeout(function () {
             $('.alert-success').fadeOut('fast');
-        }, 5000); // <-- time in milliseconds
+        }, 5000); 
     </script>
 }
 
 <h3>Scegli l'operazione da eseguire:</h3>
+
+<!-- Aggiungi questi div dove vuoi visualizzare i dati -->
+<div id="spedizioniOggi"></div>
+<div id="spedizioniInAttesa"></div>
+<div id="spedizioniPerCitta"></div>
 
 <div class="row mt-3">
     <div class="col-md-6 mb-2">
@@ -72,27 +77,29 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#btnSpedizioniOggi').click(function () {
             $.getJSON('/Spedizioni/SpedizioniOggi', function (data) {
                 // Visualizza le spedizioni di oggi
-                console.log(data);
+                $('#spedizioniOggi').html(JSON.stringify(data));
             });
         });
 
         $('#btnSpedizioniInAttesa').click(function () {
             $.getJSON('/Spedizioni/SpedizioniInAttesa', function (data) {
                 // Visualizza il numero di spedizioni in attesa
-                console.log(data);
+                $('#spedizioniInAttesa').html(JSON.stringify(data));
             });
         });
 
         $('#btnSpedizioniPerCitta').click(function () {
             $.getJSON('/Spedizioni/SpedizioniPerCitta', function (data) {
                 // Visualizza il numero di spedizioni per città
-                console.log(data);
+                $('#spedizioniPerCitta').html(JSON.stringify(data));
             });
         });
     });
