@@ -120,7 +120,9 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\Spedizione.cs" />
+    <Compile Include="Models\StatoSpedizione.cs" />
     <Compile Include="Models\Utente.cs" />
+    <Compile Include="Models\VisualizzaStatoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,11 +180,12 @@
     <Content Include="Views\Spedizioni\NuovaSpedizione.cshtml" />
     <Content Include="Views\Clienti\NuovoCliente.cshtml" />
     <Content Include="Views\Clienti\ClienteSalvato.cshtml" />
+    <Content Include="Views\Spedizioni\AggiornaStato.cshtml" />
+    <Content Include="Views\Spedizioni\VisualizzaStato.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Views\Spedizione\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -1,0 +1,74 @@
+﻿
+@model AgenziaSpedizioni.Models.StatoSpedizione
+
+@{
+    ViewBag.Title = "Aggiorna Stato Spedizione";
+}
+
+<h2>Aggiorna Stato Spedizione</h2>
+
+<!--view per la modifica dello stato di una spedizione -> poi aggiungo link/pulsante nella view AdminHome per accedere all'action AggiornaStato-->
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IDSpedizione, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IDSpedizione, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IDSpedizione, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--dropdown list per la selezione dello stato della spedizione-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Stato, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Stato, new SelectList(new List<string>() { "In transito", "In consegna", "Consegnato", "Non consegnato" }), "Seleziona uno stato", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Stato, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Luogo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Luogo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Luogo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DataOraAggiornamento, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.DataOraAggiornamento, "{0:yyyy-MM-ddTHH:mm:ss}", new { @Value = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"), htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })            @Html.ValidationMessageFor(model => model.DataOraAggiornamento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Aggiorna" class="btn btn-warning my-2" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Indietro", "Index", null, new {@class ="btn btn-secondary"})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

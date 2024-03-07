@@ -1,8 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "SpedizioneSalvata";
 }
 
 <h2>SpedizioneSalvata</h2>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success" data-dismiss="alert" data-delay="5000">
+        @TempData["Message"]
+    </div>
+}
 
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
+</script>

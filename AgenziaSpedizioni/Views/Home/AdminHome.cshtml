@@ -4,10 +4,23 @@
 
 <h2 class="text-info">Benvenuto/a nella sezione Admin!</h2>
 
+<!-- Aggiunta di un messaggio di successo per l'aggiornamento -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+    <script>
+        setTimeout(function () {
+            $('.alert-success').fadeOut('fast');
+        }, 5000); // <-- time in milliseconds
+    </script>
+}
+
 <h3>Scegli l'operazione da eseguire:</h3>
 
 <div class="row mt-3">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Inserisci nuova spedizione</h5>
@@ -15,12 +28,72 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Inserisci nuovo cliente</h5>
-                @Html.ActionLink("Inserisci", "NuovoCliente", "Clienti", null, new { @class = "btn btn-success" })
+                @Html.ActionLink("Inserisci", "NuovoCliente", "Clienti", null, new { @class = "btn btn-success my-2" })
             </div>
         </div>
     </div>
+    <div class="col-md-6 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Aggiorna stato spedizione</h5>
+                @Html.ActionLink("Aggiorna Stato Spedizione", "AggiornaStato", "Spedizioni", null, new { @class = "btn btn-success my-2" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Visualizza spedizioni di oggi</h5>
+                <button id="btnSpedizioniOggi" class="btn btn-info my-2">Visualizza</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Visualizza spedizioni in attesa</h5>
+                <button id="btnSpedizioniInAttesa" class="btn btn-info my-2">Visualizza</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Visualizza spedizioni per città</h5>
+                <button id="btnSpedizioniPerCitta" class="btn btn-info my-2">Visualizza</button>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnSpedizioniOggi').click(function () {
+            $.getJSON('/Spedizioni/SpedizioniOggi', function (data) {
+                // Visualizza le spedizioni di oggi
+                console.log(data);
+            });
+        });
+
+        $('#btnSpedizioniInAttesa').click(function () {
+            $.getJSON('/Spedizioni/SpedizioniInAttesa', function (data) {
+                // Visualizza il numero di spedizioni in attesa
+                console.log(data);
+            });
+        });
+
+        $('#btnSpedizioniPerCitta').click(function () {
+            $.getJSON('/Spedizioni/SpedizioniPerCitta', function (data) {
+                // Visualizza il numero di spedizioni per città
+                console.log(data);
+            });
+        });
+    });
+</script>
